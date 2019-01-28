@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>PAGE POTIN</title>
+	</head>
+	<body>
+		<p>Voici la page du potin n°<%= id %></p>
+		<p>
+			Son auteur : <%= params[id].author %><br>
+			Le contenu du potin : <%= params[id].content %>	
+		</p>	
+		<a href="/">revenir a la page des potins</a>
+	</body> 
+</html>

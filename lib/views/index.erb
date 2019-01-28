@@ -1,9 +1,23 @@
 <html>
 	<head>
 		<title>The Gossip Project</title>
+		<style type="text/css">
+			h3{
+				color: red;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Mon super site de gossip du dossier views !</h1>
-		<a href="/gossips/new/">Créer un gossip</a>
+		<a href="/gossips/new/">Créer un potin</a>
+		<h3>Liste des potins :</h3>
+		<% i = 1 %>
+		<% gossips.each do |gossip| %>
+			<p><a href="/gossips/<%= i %>">
+					<%= i %>. <%= gossip.author %>
+					<%= gossip.content %></a><br>
+					<% i += 1 %>
+			</p>
+		<% end %>
 	</body>
 </html>
