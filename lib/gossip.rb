@@ -9,7 +9,7 @@ class Gossip
 
 
 	def save
-		CSV.open("./db/gossip.csv", "ab") do |csv|
+		CSV.open("./db/gossip.csv", "a+") do |csv|
 			csv << [@author , @content]
 		end
 	end
@@ -55,9 +55,10 @@ class Gossip
 	end
 
 
-	def edit
-		all_gossips = Gossip.id_creator
-
+	def overwrite
+		CSV.open("./db/gossip.csv", "w+") do |csv|
+			csv << [@author , @content]
+		end
 	end
 
 end

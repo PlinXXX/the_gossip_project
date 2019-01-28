@@ -26,5 +26,25 @@ class ApplicationController < Sinatra::Base
   	id = Gossip.select_id(params)
   	erb :potin_page, locals: {params: Gossip.find(x.to_i), id: Gossip.select_id(params)}
 	end
+
+
+	get '/gossips/:n/edit' do |x|
+		params = Gossip.find(x.to_i)
+		id = Gossip.select_id(params)
+		erb :edit, locals: {params: Gossip.find(x.to_i), id: Gossip.select_id(params)}
+	end
+
+
+	post '/gossips/:n/edit' do |x|
+		newg = Gossip.new("#{params["gossip_author"]}" , "#{params["gossip_content"]}")
+		all_gossips = Gossip.all
+		all_gossips.each {|gossip|
+			if ??????
+				newg.overwrite
+			else
+				Gossip.new(gossip.author , gossip.content).save
+			end
+		}
+	end
   
 end

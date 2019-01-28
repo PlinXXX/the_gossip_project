@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit potin</title>
+</head>
+<body>
+	<h1>Mon super site de gossip du dossier views !</h1>
+		<a href="/gossips/<%= id %>">Retour</a>
+		<h3>Editer le potin n°<%= id %></h3>
+		<form action="/gossips/new/" method="POST">
+			Balance ton blase : <input type="text" name="gossip_author" /><br>
+			Balance ton blase : <input type="text" name="gossip_content" /><br>
+			<input type="submit" value="Appliquer" />
+		</form>
+</body>
+</html>
