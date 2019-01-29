@@ -14,8 +14,8 @@
 		<% i = 1 %>
 		<% gossips.each do |gossip| %>
 			<p><a href="/gossips/<%= i %>">
-					<%= i %>. <%= gossip.author %>
-					<%= gossip.content %></a><br>
+					<%= i %>. <%= gossip[0] %>
+					<%= gossip[1] %></a><br>
 					<% i += 1 %>
 			</p>
 		<% end %>

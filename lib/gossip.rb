@@ -1,3 +1,4 @@
+
 class Gossip
 
 	attr_accessor :author, :content, :id
@@ -15,10 +16,17 @@ class Gossip
 	end
 
 
+	def overwrite
+		CSV.open("./db/gossip.csv", "w+") do |csv|
+			csv << [@author , @content]
+		end
+	end
+	
+
 	def self.all
 		all_gossips = []
 		CSV.foreach("./db/gossip.csv") do |csv_line|
-			all_gossips << Gossip.new(csv_line[0], csv_line[1])
+			all_gossips << [csv_line[0], csv_line[1]]
 		end
 		all_gossips
 	end
@@ -55,9 +63,16 @@ class Gossip
 	end
 
 
-	def overwrite
-		CSV.open("./db/gossip.csv", "w+") do |csv|
-			csv << [@author , @content]
+	def reload
+		puts $params
+		newg = [@author , @content]
+		puts newg.inspect
+		all_gossips = Gossip.all
+		all_gossips.each do |gossip|
+			puts gossip.inspect
+			if Gossip.select_id($params)
+				
+			end
 		end
 	end
 

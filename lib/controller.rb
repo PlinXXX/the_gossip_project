@@ -36,15 +36,9 @@ class ApplicationController < Sinatra::Base
 
 
 	post '/gossips/:n/edit' do |x|
-		newg = Gossip.new("#{params["gossip_author"]}" , "#{params["gossip_content"]}")
-		all_gossips = Gossip.all
-		all_gossips.each {|gossip|
-			if ??????
-				newg.overwrite
-			else
-				Gossip.new(gossip.author , gossip.content).save
-			end
-		}
+		$params = Gossip.find(x.to_i)
+		Gossip.new("#{params["gossip_author"]}" , "#{params["gossip_content"]}").reload
+		redirect '/'
 	end
   
 end
