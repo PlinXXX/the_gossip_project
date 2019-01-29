@@ -64,15 +64,22 @@ class Gossip
 
 
 	def reload
-		puts $params
+		# puts $params
 		newg = [@author , @content]
-		puts newg.inspect
-		all_gossips = Gossip.all
+		puts "Potin #{Gossip.select_id($params)} modifié!"
+
+		all_gossips = Gossip.id_creator
 		all_gossips.each do |gossip|
-			puts gossip.inspect
-			if Gossip.select_id($params)
-				
+			if Gossip.select_id($params) == gossip[0]
+				gossip[1].author = newg[0]
+				gossip[1].content = newg[1]
 			end
+		end
+		i = 1
+		all_gossips.each do |idgossip|
+			idgossip[1].overwrite if i == 1
+			idgossip[1].save if i != 1
+			i += 1
 		end
 	end
 
